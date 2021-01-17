@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import Products from "./components/Products/Products";
 // import NavBar from "./components/NavBar/Navbar";
 
-import { Products, Navbar, Cart } from "./components";
+import { Products, Navbar, Cart, Checkout } from "./components";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -50,7 +50,6 @@ const App = () => {
     setCart(response.cart);
   };
 
-  console.log(cart);
   return (
     <Router>
       <div>
@@ -66,6 +65,9 @@ const App = () => {
               updateCart={handleUpdateQty}
               removeFromCart={handleRemoveFromCart}
             />
+          </Route>
+          <Route exact path='/checkout'>
+            <Checkout cart={cart} />
           </Route>
         </Switch>
       </div>
